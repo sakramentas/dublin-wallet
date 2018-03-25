@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
-import { createLogger } from 'redux-logger';
+// import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import Router from '../config/routes';
-import reducers from './redux/reducers';
+import reducers from './core/redux/reducers';
 import lang from './languages/pt-br';
 
-const logger = createLogger();
+// const logger = createLogger();
 const middleware = applyMiddleware(thunk);
 const store = createStore(reducers, {}, middleware);
 
