@@ -4,22 +4,20 @@ import { Provider } from 'react-redux';
 // import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import Router from '../config/routes';
-import reducers from './core/redux/reducers';
-import lang from './languages/pt-br';
+import Router from './config/routes';
+// import reducers from './src/core/redux/reducers';
+import lang from './src/languages/pt-br';
 
 // const logger = createLogger();
 const middleware = applyMiddleware(thunk);
-const store = createStore(reducers, {}, middleware);
+// const store = createStore(reducers, {}, middleware);
 
 export default class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          <Text>{lang.SCHOOL_HERO_MESSAGE}</Text>
-        </View>
-      </Provider>
+      <View style={styles.container}>
+        <Text>{lang.SCHOOL_HERO_MESSAGE}</Text>
+      </View>
     );
   }
 }
