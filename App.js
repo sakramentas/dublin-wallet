@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import Router from './config/routes';
 // import reducers from './src/core/redux/reducers';
 import lang from './src/languages/pt-br';
+import SchoolList from './src/scenes/SchoolList';
 
 // const logger = createLogger();
 const middleware = applyMiddleware(thunk);
@@ -17,6 +18,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Text>{lang.SCHOOL_HERO_MESSAGE}</Text>
+        <SchoolList/>
+        <Text>asdadasd</Text>
       </View>
     );
   }
