@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
+import { fetchSchools } from "../../core/redux/schools/actions";
 import Card from '../Card';
+import {
+  getSchoolList,
+  isLoading,
+} from './selectors';
 
 class SchoolList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filteredList: [{
-        name: 'English School',
-        logo: 'http://via.placeholder.com/50x50',
-        price: '1500-3000',
-        location: '1 km from spire'
-      }],
-    };
+  componentWillMount() {
+    this.props.fetchSchools();
   }
 
   render() {
-    const { filteredList } = this.state;
+    const {
+      schoolList,
+      isLoading,
+    } = this.props;
     return (
       <View>
-        <View></View>
-        {filteredList.map(school => (
-          <Card item={school}/>
-        ))}
+        {isLoading
+          ?
+          <Text>Loading...</Text>
+          :
+          Object.keys(schoolList).map(school => (
+            <Card item={schoolList[school]} key={school}/>
+          ))}
         <View>
         </View>
       </View>
@@ -31,4 +34,16 @@ class SchoolList extends Component {
   }
 }
 
-export default SchoolList;
+const mapStateToProps = state => ({
+  schoolList: getSchoolList(state),
+  isLoading: isLoading(state),
+});
+
+const mapDispatchToProps = {
+  fetchSchools,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SchoolList);
