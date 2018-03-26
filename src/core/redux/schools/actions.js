@@ -13,7 +13,7 @@ export const fetchSchoolsAction = {
   type: FETCH_SCHOOLS,
 };
 
-export const fetchSchoolsSuccess = (data) => ({
+export const fetchSchoolsSuccess = data => ({
   type: FETCH_SCHOOLS_SUCCESS,
   payload: data,
 });

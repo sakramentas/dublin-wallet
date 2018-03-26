@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View } from 'react-native';
-import { fetchSchools } from "../../core/redux/schools/actions";
+import { fetchSchools } from '../../core/redux/schools/actions';
 import Card from '../Card';
 import {
   getSchoolList,
   isLoading,
 } from './selectors';
+import { styles } from './styles';
 
 class SchoolList extends Component {
   componentWillMount() {
@@ -19,18 +20,17 @@ class SchoolList extends Component {
       isLoading,
     } = this.props;
     return (
-      <View>
+      <View style={styles.schoolList}>
         {isLoading
           ?
-          <Text>Loading...</Text>
+            <Text>Loading...</Text>
           :
           Object.keys(schoolList).map(school => (
-            <Card item={schoolList[school]} key={school}/>
+            <Card item={schoolList[school]} key={school} />
           ))}
-        <View>
-        </View>
+        <View />
       </View>
-    )
+    );
   }
 }
 

@@ -1,7 +1,7 @@
-import { firebaseDb } from "../../firebase/firebase";
-import { fetchSchoolsSuccess } from "./actions";
+import { firebaseDb } from '../../firebase/firebase';
+import { fetchSchoolsSuccess } from './actions';
 
-export const buildFetchSchools = dispatch => {
+export const buildFetchSchools = (dispatch) => {
   const schoolList = {};
 
   firebaseDb.collection('schools')
