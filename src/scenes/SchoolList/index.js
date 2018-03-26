@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SchoolListComponent from '../../components/SchoolList';
 import { styles } from './styles';
+import lang from '../../languages/pt-br';
+import Hero from '../../components/Hero';
 
-class SchoolList extends Component {
+class SchoolListScene extends Component {
+  static navigationOptions = {
+    title: 'Home',
+    headerStyle: {
+      backgroundColor: '#ffb009',
+    }
+  };
+
   render() {
     return (
       <View style={styles.schoolList}>
-        <View>
-          {/*<Search/>*/}
-        </View>
+        <Hero message={lang.SCHOOL_HERO_MESSAGE}/>
         <SchoolListComponent/>
       </View>
     );
   }
 }
 
-export default SchoolList
+export default SchoolListScene
